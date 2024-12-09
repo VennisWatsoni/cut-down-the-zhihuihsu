@@ -2,10 +2,7 @@ import pyaudio
 import numpy as np
 import time
 import psutil
-def over ():
-    global run
-    run=True
-run=False
+#检测每秒是否有声音，tm为检测长度、le为最低检测长度
 def monitor_video(tm,le):
     vmap5=[0]*tm
     p = pyaudio.PyAudio()
@@ -23,8 +20,6 @@ def monitor_video(tm,le):
         vmax5=np.max(vmap5)
         #print(vmax5)
         time.sleep(1)
-        if run:
-            return 'exit'
         if i >= le and vmax5 >= 80:
             print("检测到音频播放")
             print('声阈值:80', vmax5)
@@ -34,6 +29,7 @@ def monitor_video(tm,le):
     stream.close()
     p.terminate()
     return False 
+#检测视频加载，tm为检测长度、le为最低检测长度
 def monitor_net(tm,le):
     nmap5=[0]*tm
     print("-----开始监测netRa------")

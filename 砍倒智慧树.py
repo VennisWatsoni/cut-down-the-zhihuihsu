@@ -14,7 +14,7 @@ mv='showing'
 while (st):
     keyboard.add_hotkey('esc', stop)
     if st==0:
-        print("程序退出")
+        print("程序退出")#没必要这样退出程序，等鼠标不动直叉掉就行
         break
     mov=judgement.monitor_video(20,5)           
     if  mov :
